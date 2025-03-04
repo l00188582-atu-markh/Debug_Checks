@@ -7,7 +7,7 @@ jobs:
   branch-name-validation:
     runs-on: ubuntu-latest
     steps:
-      - name: check-branch-names
+      - name: check-branch-names-main
         run: |
           branch_name=${GITHUB_HEAD_REF}
           if ["$branch_name" = "dev" ]; then
