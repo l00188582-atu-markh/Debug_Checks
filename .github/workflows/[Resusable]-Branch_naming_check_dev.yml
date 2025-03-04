@@ -7,13 +7,14 @@ jobs:
   branch-name-validation-dev:
     runs-on: ubuntu-latest
     steps:
-      - name: check-branch-names
+      - name: check-branch-names-dev
         run: |
-          if [ ${GITHUB_HEAD_REF} =~ ^(feature-|Feature-) ]; then
+          branch_name=${GITHUB_HEAD_REF}
+          if [[ "$branch_name" = feature-* || Feature-* || docs ]]; then
             echo "Branch naming OK"
           else
-            echo "Branch naming does not comply with policy - please prefix feature branch names with 'feature-'"
+            echo "Branch naming does not comply with policy - please prefix feature branch names with 'feature-' or 'docs'"
             exit 1
           fi
-        shell: bash  
+        shell: bash   
       
